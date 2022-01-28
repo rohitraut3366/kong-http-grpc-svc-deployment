@@ -22,3 +22,21 @@ spec:
         name: flask-basic
         resources: {}
 status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: flask-deploy
+  name: flask-deploy
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: flask-deploy
+  type: ClusterIP
+status:
+  loadBalancer: {}
